@@ -46,6 +46,11 @@ public class ClickRaceServicesStub implements ClickRaceServices {
     public Set<RaceParticipant> getRegisteredPlayers(int racenum) throws ServicesException {
         return racesData.get(racenum);
     }
+
+    @Override
+    public int getSized(int racenum) throws ServicesException {
+        return racesData.size();
+    }
  
     
     @Override
@@ -62,5 +67,11 @@ public class ClickRaceServicesStub implements ClickRaceServices {
             }            
         }
     }
+
+    @Override
+    public Set<RaceParticipant> getWinnerp(int racenum) throws ServicesException {
+        return racesData.get(racenum);
+    }
+
     
 }

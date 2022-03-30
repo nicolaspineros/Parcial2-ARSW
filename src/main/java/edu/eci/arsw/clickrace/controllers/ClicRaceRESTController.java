@@ -64,8 +64,30 @@ public class ClicRaceRESTController {
 
     }
 
-    
+    @RequestMapping(path = "/{racenum}/winner",method = RequestMethod.GET)
+    public ResponseEntity<?> getWinner(@PathVariable(name = "racenum") String racenum) {
+        try {
+             return new ResponseEntity<>(services.getWinnerp(Integer.parseInt(racenum)),HttpStatus.ACCEPTED);
+        } catch (ServicesException ex) {
+            Logger.getLogger(ClicRaceRESTController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getLocalizedMessage(),HttpStatus.NOT_FOUND);
+        } catch (NumberFormatException ex){
+            Logger.getLogger(ClicRaceRESTController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("/{racenum}/ must be an integer value.",HttpStatus.BAD_REQUEST);
+        }
+    }  
 
-    
+    @RequestMapping(path = "/{racenum}/size",method = RequestMethod.GET)
+    public ResponseEntity<?> getSize(@PathVariable(name = "racenum") String racenum) {
+        try {
+             return new ResponseEntity<>(services.getSized(Integer.parseInt(racenum)),HttpStatus.ACCEPTED);
+        } catch (ServicesException ex) {
+            Logger.getLogger(ClicRaceRESTController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getLocalizedMessage(),HttpStatus.NOT_FOUND);
+        } catch (NumberFormatException ex){
+            Logger.getLogger(ClicRaceRESTController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("/{racenum}/ must be an integer value.",HttpStatus.BAD_REQUEST);
+        }
+    }     
 
 }

@@ -11,7 +11,6 @@ var loadedCars=[];
 var carsCurrentXPositions=[];
 var carsCurrentYPositions=[];
 
-
 var stompClient = null;
 
 movex = function(){    
@@ -33,8 +32,18 @@ initAndRegisterInServer = function(){
         contentType: "application/json"
     }).then(
             function(){                
-                alert("Competitor registered successfully!");
-                paintCars();
+                alert("Competitor registered successfully!");                                
+                loadCompetitorsFromServer();
+                connectAndSubscribeToCompetitors();                
+                $.get("races/25/size",
+                function (data) {
+                    console.log(data);
+                    if(data>=5){                      
+                        $("a").append($('<button id="movebutton" class="controls" onclick="movex()" >MOVE MY CAR!</button> '));
+                        $("b").append($('<button  onclick="loadCompetitorsFromServer()" >Load competitors</button>'));                                                    
+                        paintCars();      
+                    }
+                });                            
             },
             function(err){
                 alert("err:"+err.responseText);
@@ -52,17 +61,16 @@ loadCompetitorsFromServer = function () {
                     loadedCars = data;
                     var carCount = 1;
                     alert("Competitors loaded!");
-                    loadedCars.forEach(
-                            function (car) {
+                    loadedCars.forEach(                            
+                            function (car) {                                
                                 if (car.number != mycar.number) {
                                     carsCurrentXPositions[car.number] = 10;
                                     carsCurrentYPositions[car.number] = 40 * carCount;
-                                    carCount++;
+                                    carCount++;                                    
                                 }
+                                
                             }
-                    );
-                    paintCars();
-                    connectAndSubscribeToCompetitors();
+                    );                                    
                 }
         );
     }

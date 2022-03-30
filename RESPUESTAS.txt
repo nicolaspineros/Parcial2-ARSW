@@ -1,5 +1,5 @@
-
-
+ <button id="movebutton" class="controls" onclick="movex()" >MOVE MY CAR!</button>      
+<button  onclick="loadCompetitorsFromServer()" >Load competitors</button>
 
 * CONDICIÓN DE CARRERA 1:
 
@@ -17,7 +17,12 @@
         POSIBLES INCONSISTENCIAS (SI NO SE ELIMINA):
 
         SOLUCIÓN:
-
+$.get("races/25/participants",
+                function (data) {
+                    loadcount = data;}
+                );
+                console.log(loadcount.length);
 
 ....
+
 
