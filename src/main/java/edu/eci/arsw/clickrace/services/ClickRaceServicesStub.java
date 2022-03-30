@@ -49,7 +49,7 @@ public class ClickRaceServicesStub implements ClickRaceServices {
 
     @Override
     public int getSized(int racenum) throws ServicesException {
-        return racesData.size();
+        return racesData.get(racenum).size();
     }
  
     

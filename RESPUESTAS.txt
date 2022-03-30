@@ -1,27 +1,21 @@
- <button id="movebutton" class="controls" onclick="movex()" >MOVE MY CAR!</button>      
-<button  onclick="loadCompetitorsFromServer()" >Load competitors</button>
 
-* CONDICIÓN DE CARRERA 1:
+* CONDICIÓN DE CARRERA 1: dos autos llegan al tiempo 
 
-	REGIÓN CRÍTICA:
+	REGIÓN CRÍTICA: metodo de validacion de llegada
 
-	POSIBLES INCONSISTENCIAS (SI NO SE ELIMINA):
+	POSIBLES INCONSISTENCIAS (SI NO SE ELIMINA): si no saber que ganador 
 
-	SOLUCIÓN:
+	SOLUCIÓN: sincronizar el metodo de validacion de llegada por los movimientos de cada auto
 
 
-* CONDICIÓN DE CARRERA 2:
+* CONDICIÓN DE CARRERA 2: 
 
         REGIÓN CRÍTICA:
 
         POSIBLES INCONSISTENCIAS (SI NO SE ELIMINA):
 
         SOLUCIÓN:
-$.get("races/25/participants",
-                function (data) {
-                    loadcount = data;}
-                );
-                console.log(loadcount.length);
+
 
 ....
 

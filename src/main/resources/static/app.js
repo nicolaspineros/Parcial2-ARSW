@@ -33,17 +33,18 @@ initAndRegisterInServer = function(){
     }).then(
             function(){                
                 alert("Competitor registered successfully!");                                
-                loadCompetitorsFromServer();
-                connectAndSubscribeToCompetitors();                
+                            
                 $.get("races/25/size",
                 function (data) {
                     console.log(data);
                     if(data>=5){                      
                         $("a").append($('<button id="movebutton" class="controls" onclick="movex()" >MOVE MY CAR!</button> '));
-                        $("b").append($('<button  onclick="loadCompetitorsFromServer()" >Load competitors</button>'));                                                    
+                        $("b").append($('<button  onclick="loadCompetitorsFromServer()" >Load competitors</button>'));
+                        loadCompetitorsFromServer();                                                    
                         paintCars();      
                     }
-                });                            
+                });                
+                connectAndSubscribeToCompetitors();                                
             },
             function(err){
                 alert("err:"+err.responseText);
